@@ -2,7 +2,9 @@
 FROM node:20-slim as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --verbose
+RUN ls -la node_modules/.bin/vite || echo "VITE NOT FOUND!"
+RUN which vite || npm exec vite -- --version
 COPY . .
 RUN npm run build
 
