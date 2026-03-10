@@ -1,8 +1,8 @@
 # Étape 1: Build de l'application
-FROM node:20-alpine as build-stage
+FROM node:20-slim as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci && npm list vite
+RUN npm ci
 COPY . .
 RUN npm run build
 
