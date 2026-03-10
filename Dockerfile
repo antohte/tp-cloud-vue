@@ -1,8 +1,8 @@
 # Étape 1: Build de l'application
-FROM node:lts-alpine as build-stage
+FROM node:20-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --prefer-offline --no-audit
+RUN npm ci && npm list vite
 COPY . .
 RUN npm run build
 
